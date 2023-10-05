@@ -1,4 +1,4 @@
-class item:
+class Item:
     def __init__(self,name,price,quantity):
         assert price>=0, f"Price {price} is not greater than or equal to 0!"
         assert quantity>=0, f"Quantity {quantity} is not greater than or equal to 0!"
@@ -6,21 +6,22 @@ class item:
         self.price=price
         self.quantity=quantity
     def total_amt(self):
-        return self.price*self.quantity
-
-item_no=int(input("How many item(s) you would like to purchase ? "))
-i=1
-sum=0
-while(item_no>0):
-    item_name=input(f"Enter name of item[{i}] : ")
-    item_price=float(input(f"Enter price of each {item_name}: "))
-    item_quantity=int(input(f"Enter total quantity of {item_name}: "))
-    item1=item(item_name,item_price,item_quantity)
-    total1=item1.total_amt()
-    print(f"Total amount to be paid for {item_name} : ", total1)
-    item_no=item_no-1
-    sum+=total1
-    i+=1
-print(f"\nNet total for all items = {sum}")
-
+        total=self.price*self.quantity
+        return total-(total*(Item.discount/100))
+    
+try:
+    item_no=int(input("How many item(s) you would like to purchase ? "))
+    Item.discount=float(input("Enter the discount percentage : "))
+    net_total=0
+    for i in range(1,item_no+1):
+        item_name=str(input(f"Enter name of item[{i}] : ")) # Although default value is 'str' but still typecasted to check exception.
+        item_price=int(input(f"Enter price of each {item_name}: "))
+        item_quantity=int(input(f"Enter total quantity of {item_name}: "))
+        item=Item(item_name,item_price,item_quantity)
+        total=item.total_amt()
+        print(f"Total amount to be paid for {item_name} : {total}")
+        net_total+=total
+    print(f"\nNet total for all items = {net_total:.2f}")
+except:
+    print("Please enter a valid input!")
 
