@@ -1,0 +1,24 @@
+class item:
+    def __init__(self,name,x,y):
+        self.name=name
+        self.x=x
+        self.y=y
+    def total_amt(self):
+        return self.x*self.y
+
+item_no=int(input("How many item(s) you would like to purchase ? "))
+i=1
+sum=0
+while(item_no>0):
+    item_name=input(f"Enter name of item[{i}] : ")
+    item_price=int(input(f"Enter price of each {item_name}: "))
+    item_quantity=int(input(f"Enter total quantity of {item_name}: "))
+    item1=item(item_name,item_price,item_quantity)
+    total1=item1.total_amt()
+    print(f"Total amount to be paid for {item_name} : ", total1)
+    item_no=item_no-1
+    sum+=total1
+    i+=1
+print(f"\nThe total amount you have to pay for all items combined is {sum}")
+
+
