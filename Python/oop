@@ -1,17 +1,19 @@
 class item:
-    def __init__(self,name,x,y):
+    def __init__(self,name,price,quantity):
+        assert price>=0, f"Price {price} is not greater than or equal to 0!"
+        assert quantity>=0, f"Quantity {quantity} is not greater than or equal to 0!"
         self.name=name
-        self.x=x
-        self.y=y
+        self.price=price
+        self.quantity=quantity
     def total_amt(self):
-        return self.x*self.y
+        return self.price*self.quantity
 
 item_no=int(input("How many item(s) you would like to purchase ? "))
 i=1
 sum=0
 while(item_no>0):
     item_name=input(f"Enter name of item[{i}] : ")
-    item_price=int(input(f"Enter price of each {item_name}: "))
+    item_price=float(input(f"Enter price of each {item_name}: "))
     item_quantity=int(input(f"Enter total quantity of {item_name}: "))
     item1=item(item_name,item_price,item_quantity)
     total1=item1.total_amt()
@@ -19,6 +21,6 @@ while(item_no>0):
     item_no=item_no-1
     sum+=total1
     i+=1
-print(f"\nThe total amount you have to pay for all items combined is {sum}")
+print(f"\nNet total for all items = {sum}")
 
 
