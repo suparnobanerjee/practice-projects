@@ -14,16 +14,16 @@ class Solution{
 	    const int mod=1000000007;
 	    int a=0,b=1;
 	    int temp=0;
-	    vector<int> vec;
+	    unordered_set<int> set;
 	    for(int j=2;j<=1000;j++){
 	        temp=(a+b)%mod;
-	        vec.push_back(temp);
+	        set.insert(temp);
 	        a=b;
 	        b=temp;
 	    }
-	    vec.push_back(0);
+	    set.insert(0);
 	    int count=0;
-	    for(const int& element : vec){
+	    for(const int& element : set){
 	        for(int k=0;k<N;k++){
 	            if(element==arr[k]) count++;
 	        }
