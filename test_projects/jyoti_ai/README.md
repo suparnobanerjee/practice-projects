@@ -45,10 +45,4 @@ Jyoti is a user-friendly personal AI assistant that works on your terminal. It i
 ```
 **Note :** The code will address user with my name as it was intended to use by me, so feel free to tweak this code slightly before use.
 
-## Support
 
-Feel free to fork this repository and submit pull requests! All contributions, big or small, are highly valued.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/suparnobanerjee/jyoti/blob/main/LICENSE) file for details.
