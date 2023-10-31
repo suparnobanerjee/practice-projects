@@ -10,7 +10,7 @@ print(df.bedrooms)    ## After (filling NA with median)
 reg = linear_model.LinearRegression()
 reg.fit(df[['area','bedrooms','age']],df['price'])
 
-# print(reg.coef_) # m1,m2,m3...
+# print(reg.coef_) # m1,m2,m3
 # print(reg.intercept_) # c
 
 
