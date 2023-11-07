@@ -12,6 +12,12 @@ void selection_sort(int arr[], int n){
     arr[index]=temp;
   }
 }
+void insertion_sort(int arr[],int n){
+
+}
+void bubble_sort(int arr[],int n){
+  
+}
 
 int main(){
   int n;
@@ -26,7 +32,9 @@ int main(){
   for(int i=0; i<n; i++){
     cout<<arr[i]<<" ";
   }
-  selection_sort(arr, n);
+  // selection_sort(arr, n);
+  // insertion_sort(arr,n);
+  // bubble_sort(arr,n);
   cout<<"\nOrdered array : "<<endl;
   for(int i=0; i<n; i++){
     cout<<arr[i]<<" ";
