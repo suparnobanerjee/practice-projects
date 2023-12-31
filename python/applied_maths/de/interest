@@ -1,0 +1,4 @@
+import numpy as np
+r=0.05
+print((1+r/365)**365)
+print(np.exp(r))
