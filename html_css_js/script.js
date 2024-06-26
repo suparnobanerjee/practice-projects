@@ -1,48 +1,20 @@
-function doSomething(){
-    const el=document.getElementById('p1');
-    el.style.color='blue';
-    alert('blue is my favourite colour!');
+const fs=require('fs');
+function readFile(cb){
+    fs.readFile('a.txt','utf-8',function(err,data){
+        cb(data);
+    });
 }
-
-const el=document.getElementById('myCanvas');
-const ctx=el.getContext('2d');
-
-ctx.beginPath();
-ctx.lineWidth=7;
-ctx.moveTo(100,300);
-ctx.lineTo(300,300);
-ctx.lineTo(300,100);
-ctx.lineTo(200,50);
-ctx.lineTo(100,100);
-ctx.lineTo(100,300);
-ctx.fillStyle='#EBF014';
-ctx.fill();
-ctx.stroke();
-
-ctx.beginPath();
-ctx.moveTo(100,100);
-ctx.lineTo(80,110);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.moveTo(300,100);
-ctx.lineTo(320,110);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.arc(200,200,50,0,2*Math.PI);
-ctx.fillStyle='#0096FF';
-ctx.fill();
-ctx.stroke();
-
-ctx.beginPath();
-ctx.rect(100,300,200,20);
-ctx.fillStyle='#F014EC';
-ctx.fill();
-ctx.stroke();
-
-
-
-
-
-
+function displayData(data){
+    console.log(data);
+}
+readFile(displayData)
+function sumT100(){
+    let sum=0;
+    for(let i=1;i<=100;i++){
+        sum+=i;
+    }
+    return sum;
+}
+const total = sumT100();
+console.log(total);
+console.log("Hello!")
