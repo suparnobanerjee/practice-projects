@@ -1,0 +1,69 @@
+<html>
+  <script>
+    
+    // //ugly way
+    // function todo(){
+    //   const title=document.getElementById("title").value;
+    //   const description=document.getElementById("description").value;
+    //   const parentDiv=document.getElementById("container").innerHTML;
+    //   document.getElementById("container").innerHTML=parentDiv + `<div>
+    //     <div>${title}</div>
+    //     <div>${description}</div>
+    //     <button>Mark if done</button>
+    //   </div>
+    //   `}
+
+    //better way
+    let global_id = 1;
+    const state=[];
+    function markAsDone(todoID) {
+      const ifDone = document.getElementById(todoID);
+      ifDone.children[2].innerHTML = 'Done!';
+    }
+    function createChild(title, description, id) {
+      const child = document.createElement('div');
+      const grandChild1 = document.createElement('div');
+      grandChild1.innerHTML = title;
+      const grandChild2 = document.createElement('div');
+      grandChild2.innerHTML = description;
+      const grandChild3 = document.createElement('button');
+      grandChild3.innerHTML = 'Mark as done?';
+      grandChild3.setAttribute('onclick', `markAsDone(${id})`);
+      child.appendChild(grandChild1);
+      child.appendChild(grandChild2);
+      child.appendChild(grandChild3);
+      child.setAttribute('id', id);
+      return child;
+    }
+    function updateState(state){
+      const parent=document.getElementById("container");
+      parent.innerHTML="";
+      for(let i=0;i<state.length;i++){
+        const title=state[i].title;
+        const description=state[i].description;
+        parent.appendChild(createChild(title,description,global_id++));
+      }
+    }
+    function todo(){
+      const title=document.getElementById("title").value;
+      const description=document.getElementById("description").value;
+      state.push({
+        title: title,
+        description: description,
+        id: global_id++
+      })
+      updateState(state);
+    }
+    // window.setInterval(async()=>{
+    //   const res=await fetch("https://sum-server.100xdevs.com/todos");
+    //   const json=await res.json();
+    //   updateState(json.todos)
+    // },3000);
+  </script>
+  <body>
+    <input id="title" type="text" placeholder="Title" /><br /><br />
+    <input id="description" type="text" placeholder="Description" /><br /><br />
+    <button onclick="todo()">Add to-do</button>
+    <div id="container"></div>
+  </body>
+</html>

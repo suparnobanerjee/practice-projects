@@ -1,0 +1,32 @@
+<html>
+  <title>Simple Interest</title>
+  <script>    
+    // debouncing is used to minimize unnecessary API calls
+    let timeout;
+    function debouncePopulateDiv(){
+      clearTimeout(timeout);
+      setTimeout(()=>{
+        populateDiv();
+      },1000);
+    }
+    
+    async function populateDiv(){
+      const p=parseInt(document.getElementById("principal").value);
+      const r=parseInt(document.getElementById("rate").value);
+      const t=parseInt(document.getElementById("time").value);
+      const response=await fetch("https://sum-server.100xdevs.com/interest?principal="+p+"&rate="+r+"&time="+t);
+      const data=await response.json();
+      document.getElementById("totalAmt").innerHTML=data.total;
+      document.getElementById("interest").innerHTML=data.interest;
+    }
+
+  </script>
+  <body>
+    <input oninput="debouncePopulateDiv()" id="principal" type="text" placeholder="Principal"></input><br><br>
+    <input oninput="debouncePopulateDiv()" id="rate" type="text" placeholder="Rate of Interest"></input><br><br>
+    <input oninput="debouncePopulateDiv()" id="time" type="text" placeholder="Time period"></input><br><br>
+    Net ammount :<div id="totalAmt"></div><br> 
+    Interest :<div id="interest"></div>   
+  </body>
+</html>
+
